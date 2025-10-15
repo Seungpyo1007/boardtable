@@ -1,6 +1,6 @@
-# Boardtable
+# boardtable
 
-Boardtable은 Flutter로 제작된 간단한 사용자 데이터 조회 애플리케이션입니다. [Faker API](https://fakerapi.it/)를 사용하여 가상의 사용자 데이터를 불러와 테이블 형식으로 보여주고, 사용자를 검색하는 기능을 제공합니다.
+boardtable은 Flutter로 제작된 간단한 사용자 데이터 조회 애플리케이션입니다. [Faker API](https://fakerapi.it/)를 사용하여 가상의 사용자 데이터를 불러와 테이블 형식으로 보여주고, 사용자를 검색하는 기능을 제공합니다.
 
 ## ✨ 주요 기능
 
