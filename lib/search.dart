@@ -79,7 +79,7 @@ class _SearchPageState extends State<SearchPage> {
                   // 필터링된 결과가 비어 있는지 확인합니다.
                   : _filteredUsers.isEmpty
                       ? Center(child: Text(_query.isEmpty ? '검색어를 입력해주세요.' : '검색 결과가 없습니다.'))
-                      : ListView.separated(
+                      : ListView.separated( // ListView.separated를 사용하여 구분선을 추가합니다.
                           itemCount: _filteredUsers.length,
                           separatorBuilder: (_, __) => const Divider(height: 1), // 각 항목 사이에 구분선 추가
                           itemBuilder: (context, index) {

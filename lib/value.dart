@@ -17,7 +17,7 @@ class ValuePage extends StatefulWidget {
 
 class _ValuePageState extends State<ValuePage> {
   // API 요청에 사용될 상태 변수들입니다.
-  String? _selectedResource = 'persons'; // 선택된 API 리소스 (기본값: 'persons')
+  String? _selectedController = 'persons'; // 선택된 API 리소스 (기본값: 'persons')
   final _quantityController = TextEditingController(text: '20');
   final _localeController = TextEditingController(text: 'ko_KR');
 //  final _seedController = TextEditingController();
@@ -49,14 +49,14 @@ class _ValuePageState extends State<ValuePage> {
     });
 
     // 선택된 리소스를 기반으로 API URI를 생성합니다.
-    var uri = Uri.parse('https://fakerapi.it/api/v2/$_selectedResource');
+    var uri = Uri.parse('https://fakerapi.it/api/v2/$_selectedController');
     final Map<String, String> queryParams = {};
 
     // 각 컨트롤러의 텍스트가 비어있지 않으면 쿼리 파라미터에 추가합니다.
     if (_quantityController.text.isNotEmpty) queryParams['_quantity'] = _quantityController.text;
     if (_localeController.text.isNotEmpty) queryParams['_locale'] = _localeController.text;
 //    if (_seedController.text.isNotEmpty) queryParams['_seed'] = _seedController.text;
-//    if (_selectedResource == 'texts' && _charactersController.text.isNotEmpty) {
+//    if (_selectedController == 'texts' && _charactersController.text.isNotEmpty) {
 //      queryParams['_characters'] = _charactersController.text;
 //    }
 
@@ -77,7 +77,7 @@ class _ValuePageState extends State<ValuePage> {
 
         // 리소스가 'users' 또는 'persons'이고 API 응답 코드가 200(성공)인 경우,
         // JSON 데이터를 User 객체 리스트로 파싱합니다.
-        if ((_selectedResource == 'users' || _selectedResource == 'persons') && jsonResponse['code'] == 200) {
+        if ((_selectedController == 'users' || _selectedController == 'persons') && jsonResponse['code'] == 200) {
           final List usersJson = jsonResponse['data'];
           _fetchedUsers = usersJson.map((e) => User.fromJson(e)).toList();
         }
@@ -106,14 +106,14 @@ class _ValuePageState extends State<ValuePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // --- 상단 파라미터 입력 영역 ---
-            // API 리소스를 선택하는 드롭다운 메뉴입니다.
+            // API 컨트롤러를 선택하는 드롭다운 메뉴입니다.
             DropdownButtonFormField<String>(
-              value: _selectedResource,
+              value: _selectedController, // 컨트롤러 기본값 ('persons')
               decoration: const InputDecoration(labelText: 'Resource', border: OutlineInputBorder()),
               items: _resources.map((String value) {
                 return DropdownMenuItem<String>(value: value, child: Text(value));
               }).toList(),
-              onChanged: (newValue) => setState(() => _selectedResource = newValue),
+              onChanged: (newValue) => setState(() => _selectedController = newValue),
             ),
             const SizedBox(height: 16),
             // 수량(_quantity)과 지역(_locale)을 입력받는 텍스트 필드입니다.
@@ -121,8 +121,7 @@ class _ValuePageState extends State<ValuePage> {
             _buildInput(_localeController, '_locale', TextInputType.text),
 //            _seed와 _characters 필드는 현재 주석 처리되어 있습니다.
 //            _buildInput(_seedController, '_seed', TextInputType.text);
-//            if (_selectedResource == 'texts')
-//              _buildInput(_charactersController, '_characters', TextInputType.number);
+//            _buildInput(_charactersController, '_characters', TextInputType.number);
 
             const SizedBox(height: 24),
             // API 요청을 보내는 버튼입니다.
