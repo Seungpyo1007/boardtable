@@ -23,7 +23,7 @@ class _SearchPageState extends State<SearchPage> {
     _filteredUsers = widget.users;
   }
 
-  // 부모 위젯(HomePage)에서 전달받은 데이터(props)가 변경될 때 호출됩니다.
+  // 부모 위젯(HomePage)에서 전달받은 데이터가 변경될 때 호출됩니다.
   @override
   void didUpdateWidget(SearchPage oldWidget) {
     super.didUpdateWidget(oldWidget);
