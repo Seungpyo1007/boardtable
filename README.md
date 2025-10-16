@@ -21,7 +21,7 @@ boardtable은 Flutter로 제작된 간단한 사용자 데이터 조회 애플�
 
 1.  **저장소 복제**
     ```sh
-    git clone https://github.com/your-username/boardtable.git
+    git clone https://github.com/Seungpyo1007/boardtable.git
     ```
 
 2.  **프로젝트 폴더로 이동**
