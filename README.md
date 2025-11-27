@@ -2,6 +2,20 @@
 
 boardtable은 Flutter로 제작된 간단한 사용자 데이터 조회 애플리케이션입니다. [Faker API](https://fakerapi.it/)를 사용하여 가상의 사용자 데이터를 동적으로 요청하고, 테이블과 검색 목록 형태로 데이터를 조회하는 기능을 제공합니다. 상태 관리를 통해 여러 화면에서 데이터를 일관성 있게 보여줍니다.
 
+## 스크린샷
+
+### 메인 화면
+<img width="296" height="640" alt="Image" src="https://github.com/user-attachments/assets/e341ce8a-1878-446c-922e-ba2cf379d5e8" />
+<img width="296" height="640" alt="Image" src="https://github.com/user-attachments/assets/43e54a8d-10cb-4007-822f-c92c3c676675" />
+
+### API 받는 화면
+<img width="296" height="640" alt="Image" src="https://github.com/user-attachments/assets/fbfd0d95-ad89-4317-a70a-2a0914f44546" />
+<img width="296" height="640" alt="Image" src="https://github.com/user-attachments/assets/512ba550-57ff-4620-9998-d30952a4709f" />
+
+### API 받은 화면
+<img width="296" height="640" alt="Image" src="https://github.com/user-attachments/assets/c16eeefe-1191-4d33-a232-3e4c7c97905e" />
+<img width="296" height="640" alt="Image" src="https://github.com/user-attachments/assets/522ca1e2-6581-444d-9e97-36da1351b805" />
+
 ## ✨ 주요 기능
 
 - **API 테스트 및 데이터 생성**: `Faker API`의 다양한 리소스와 파라미터를 직접 조합하여 테스트 요청을 보내고 실시간으로 JSON 응답을 확인할 수 있습니다.
