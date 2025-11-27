@@ -1,0 +1,59 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Flutter Test and Build (Android)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      # 1. Flutter SDK 설정 (버전 변경)
+      # Dart SDK 3.9.2를 지원하기 위해 Flutter 버전을 최신 안정화 버전 (예: 3.25.0)으로 변경합니다.
+      # 이 버전은 Dart 3.9.2 이상의 버전을 포함하고 있을 가능성이 높습니다.
+      - name: Set up Flutter SDK (supporting Dart >= 3.9.2)
+        uses: subosito/flutter-action@v2
+        with:
+          # Dart SDK 3.9.2 이상을 지원하는 최신 안정화 버전으로 변경 (예시)
+          flutter-version: 3.25.0
+          channel: 'stable' # 안정화 채널 사용 명시
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Run unit/widget tests
+        run: flutter test
+        
+      # 2. Android 빌드 실행
+      # (옵션: --no-sound-null-safety는 구버전 지원 시 사용)
+      - name: Build Debug APK
+        run: flutter build apk --debug
+        
+      - name: Build Debug AppBundle
+        run: flutter build appbundle --debug
+
+      # 3. 아티팩트 업로드 (다운로드를 위해 필수 추가)
+      - name: Upload Debug APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk
+          # 빌드된 APK의 기본 경로
+          path: build/app/outputs/flutter-apk/app-debug.apk
+          
+      - name: Upload Debug AppBundle Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-aab
+          # 빌드된 AAB의 기본 경로
+          path: build/app/outputs/bundle/debug/app-debug.aab
