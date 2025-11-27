@@ -1,5 +1,5 @@
 # This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
+# They are provided by a third-party and governed by
 # separate terms of service, privacy policy, and support
 # documentation.
 
@@ -20,14 +20,13 @@ jobs:
         uses: actions/checkout@v4
 
       # 1. Flutter SDK 설정 (버전 변경)
-      # Dart SDK 3.9.2를 지원하기 위해 Flutter 버전을 최신 안정화 버전 (예: 3.25.0)으로 변경합니다.
-      # 이 버전은 Dart 3.9.2 이상의 버전을 포함하고 있을 가능성이 높습니다.
-      - name: Set up Flutter SDK (supporting Dart >= 3.9.2)
+      # Dart SDK 3.9.2를 지원하기 위해 Flutter 버전을 최신 안정화 버전으로 변경합니다.
+      # 'flutter-version'을 제거하고 'channel: stable'만 남겨서 최신 버전을 자동으로 가져오도록 합니다.
+      - name: Set up Flutter SDK (using latest stable version)
         uses: subosito/flutter-action@v2
         with:
-          # Dart SDK 3.9.2 이상을 지원하는 최신 안정화 버전으로 변경 (예시)
-          flutter-version: 3.25.0
-          channel: 'stable' # 안정화 채널 사용 명시
+          # flutter-version: 3.25.0 # 이 부분을 삭제하여 버전 결정 오류를 방지
+          channel: 'stable' # 안정화 채널의 최신 버전을 사용합니다.
 
       - name: Get dependencies
         run: flutter pub get
