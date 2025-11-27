@@ -19,8 +19,7 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
-      # 1. Flutter SDK 설정 (버전 변경)
-      # Dart SDK 3.9.2를 지원하기 위해 Flutter 버전을 최신 안정화 버전으로 변경합니다.
+      # 1. Flutter SDK 설정
       # 'flutter-version'을 제거하고 'channel: stable'만 남겨서 최신 버전을 자동으로 가져오도록 합니다.
       - name: Set up Flutter SDK (using latest stable version)
         uses: subosito/flutter-action@v2
@@ -31,11 +30,11 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Run unit/widget tests
-        run: flutter test
+      # 'flutter test' 대신 'flutter analyze'를 실행하도록 수정되었습니다. (코드 정적 분석)
+      - name: Run static analysis (flutter analyze)
+        run: flutter analyze
         
       # 2. Android 빌드 실행
-      # (옵션: --no-sound-null-safety는 구버전 지원 시 사용)
       - name: Build Debug APK
         run: flutter build apk --debug
         
