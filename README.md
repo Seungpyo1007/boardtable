@@ -69,3 +69,8 @@ lib/
 ├── table.dart        # 사용자 데이터를 DataTable로 보여주는 화면 (상태를 갖지 않음)
 └── search.dart       # 사용자 목록을 검색하고, 탭하여 상세 정보를 보는 화면
 ```
+
+## 📜 라이선스
+
+이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 `LICENSE` 파일을 참조하십시오.
+Copyright (c) 2026 Seungpyo1007
